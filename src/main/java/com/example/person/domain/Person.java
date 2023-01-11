@@ -21,13 +21,14 @@ public class Person extends Timestamped{
     @Column(nullable = false)
     private Long age;
 
-    // 새로운 객체 생성시 필요한 기본 생성자
+    // 새로운 객체 생성시 필요한 생성자 ( ! == 기본 생성자 )
     public Person(String name, Long age) {
         this.name = name;
         this.age = age;
     }
 
-    // Dto 를 통한 PostMapping (업데이트)를 위한 생성자
+    // Dto 를 통한 PostMapping (업데이트)를 위한 생성자 (?)
+    // Dto 로 생성을 위한 생성자
     public Person(PersonRequestDto requestDto) {
         this.name = requestDto.getName();
         this.age = requestDto.getAge();

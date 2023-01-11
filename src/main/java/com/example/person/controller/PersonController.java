@@ -20,13 +20,13 @@ public class PersonController {
 
     // PostMapping 을 통해서, 같은 주소라도 방식이 다름을 구분합니다.
     @PostMapping("/api/persons")
-    public Person createCourse(@RequestBody PersonRequestDto requestDto) {
+    public Person createPerson(@RequestBody PersonRequestDto requestDto) {
         // @RequestBody 라는 어노테이션은 컨트롤러에서 요청을 받는 녀석이라는 걸 표시.
         // requestDto 는, 생성 요청을 의미.
         // 사람 info 를 만들기 위해서는 이름과 나이 이름이 필요하잖아?
         // 그 정보를 가져오는 녀석.
 
-        // 저장하는 것은 Dto 가 아니라 Course 이니, Dto 의 정보를 course 에 담아야 함.
+        // 저장하는 것은 Dto 가 아니라 Person 이니, Dto 의 정보를 Person 에 담아야 함.
         // 잠시 뒤 새로운 생성자를 만듦.
         Person person = new Person(requestDto);
 
@@ -35,17 +35,17 @@ public class PersonController {
     }
 
     @GetMapping("/api/persons")
-    public List<Person> getPersons() {
+    public List<Person> getPerson() {
         return personRepository.findAll();
     }
 
     @PutMapping("/api/persons/{id}")
-    public Long updateCourse(@PathVariable Long id, @RequestBody PersonRequestDto requestDto) {
+    public Long updatePerson(@PathVariable Long id, @RequestBody PersonRequestDto requestDto) {
         return personService.update(id, requestDto);
     }
 
     @DeleteMapping("/api/persons/{id}")
-    public Long deleteCourse(@PathVariable Long id) {
+    public Long deletePerson(@PathVariable Long id) {
         personRepository.deleteById(id);
         return id;
     }
